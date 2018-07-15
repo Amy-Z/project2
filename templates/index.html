@@ -13,20 +13,24 @@
               localStorage.setItem('username', username);
         }
 
-        // // function showname() {
-        // //   // Load current value of username
-        // //   document.addEventListener('DOMContentLoaded', () => {
-        // //       document.querySelector('#username').innerHTML = localStorage.getItem('username');
-        // //       localStorage.setItem('username', username);
-        // //   });
+        function showname() {
+            let showname=document.querySelector('#username').innerHTML = localStorage.getItem('username');
+            alert(showname)
 
-        // }
+            // if (localStorage.getItem('username'))
+          // Load current value of username
+          document.addEventListener('DOMContentLoaded', () => {
+              document.querySelector('#username').innerHTML = localStorage.getItem('username');
+            //   localStorage.setItem('username', username);
+          });
+
+        }
     </script>
     </head>
-    <body>
+    <body onload="showname()">
         <form>
             <p>ChatterBox<p>
-            <p>Type in your Display Name.</p>
+            <p id="displaynm">Type in your Display Name.</p>
 
             Username:<br>
             <input id="username" type="text" name="username">
