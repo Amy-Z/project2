@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-        <script type="text/javascript">
-        function displayname() {
-            // localStorage.clear();
-            let username=document.getElementById("username").value;
-            alert(username)
-          // Set display name
-        //   if (!localStorage.getItem('username'))
-              localStorage.setItem('username', username);
-        }
-
-        function showname() {
-            let showname=document.querySelector('#username').innerHTML = localStorage.getItem('username');
-            alert(showname)
-
-            // if (localStorage.getItem('username'))
-          // Load current value of username
-          document.addEventListener('DOMContentLoaded', () => {
-              document.querySelector('#username').innerHTML = localStorage.getItem('username');
-            //   localStorage.setItem('username', username);
-          });
-
-        }
-    </script>
+        <!--<script charset="UTF-8" src="/scripts/index.js">-->
+        <script src="{{ url_fir('static', filename='index.js') }}"></script>
+        <!--<script charset="UTF-8">-->
+        //     function displayname() {
+        //         localStorage.clear();
+        //         let username=document.getElementById("username").value;
+        //         // alert(username)
+        //         localStorage.setItem('username', username);
+        //     }
+        //     function showname() {
+        //         let showname=document.querySelector('#username').innerHTML = localStorage.getItem('username');
+        //         // alert(showname)
+        //         if (!localStorage.getItem('username'))
+        //             document.getElementById("displaynm").innerHTML = "Type in your Display Name.";
+        //         else
+        //             document.getElementById("displaynm").innerHTML = "Welcome, " + showname
+        //     }
+        <!--</script>-->
     </head>
     <body onload="showname()">
+        <div>
         <form>
-            <p>ChatterBox<p>
-            <p id="displaynm">Type in your Display Name.</p>
-
-            Username:<br>
-            <input id="username" type="text" name="username">
-            <br>
-            <button onclick="displayname()" type="submit">Click Here!</button>
-
+            <div class="col-4" style="background-color:blue"></div>
+            <div class="col-8" style="width:30% border-color:black border-size:1px background-color:#f0f8fe">
+                <p>ChatterBox<p>
+                <p id="displaynm">Type in your Display Name.</p>
+                <br>
+                Username:<br>
+                <input id="username" type="text" name="username">
+                <br>
+                <br>
+                <button onclick="displayname()" type="submit">Click Here!</button>
+                <br>
+            </div>
+            <div style="width=70% border-color:green border-size:1px">
+            </div>
         </form>
+        </div>
     </body>
-
 </html>
+
