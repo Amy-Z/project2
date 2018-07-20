@@ -19,13 +19,18 @@ function show_name()
 
 function addchannel()
 {
-    alert(channelname);
+    var channel_list = [];
     let channelname=document.getElementById("txtchannel").value;
-    document.getElementById("lstchannel").value = channelname;
-
-}
-
-function channel()
-{
-    alert(channel_list);
+    alert(channelname);
+    // document.getElementById("lstchannel").value = channelname;
+    var select = document.getElementById("lstchannel");
+    var option = document.createElement('option');
+    option.text = channelname;
+    option.value = channelname;
+    select.add(option);
+    // channel_list.push(option.outerHTML);
+    select.insertAdjacentHTML('beforeEND',select.join('\n'));
+    stop();
+    // channel_list.push(channelname);
+    // document.getElementById("lstchannel").value = channel_list;
 }

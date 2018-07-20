@@ -6,22 +6,6 @@
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
         <script src="{{ url_for('static', filename='index.js') }}"></script>
         <title>Chatterbox</title>
-        <script>
-        function addchannel()
-        {
-            // var option = [];
-            let channelname=document.getElementById("txtchannel").value;
-            alert(channelname);
-            // document.getElementById("lstchannel").value = channelname;
-            var select = document.getElementById("lstchannel");
-            var option = document.createElement('option');
-            option.text = channelname;
-            option.value = channelname;
-            select.add(option,0);
-            // channel_list.push(channelname);
-            // document.getElementById("lstchannel").value = channel_list;
-        }
-        </script>
     </head>
 
     <body onload="show_name()" style="font-size:15px">
@@ -55,10 +39,11 @@
 
                         <input id="txtchannel" type="text" name="txtchannel" placeholder="Channel Name">
                         <br><br>
-                        <button class="btn btn-primary" onclick="addchannel()" type="submit">Create</button>
+                        <button class="btn btn-primary" onclick="addchannel()" type="button" onsubmit="return false">Create</button>
                         <br><br>
                     </div>
                 </div>
+                <div class="col-3"></div>
             </form>
         </div>
     </body>
