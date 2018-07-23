@@ -12,7 +12,7 @@ socketio = SocketIO(app)
 
 # list of all channels
 channel_list = ['general']
-messages = ['hello']
+messages = []
 
 
 @app.route("/")
@@ -21,7 +21,8 @@ def index():
 
 @socketio.on("submit message")
 def chats(data):
-    print(data);
+    messages.append(data)
+    emit("receive", data, broadcast=True)
 # selection = data["selection"]
 # emit("announce message", selection, broadcast=True)
 

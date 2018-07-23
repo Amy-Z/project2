@@ -21,10 +21,11 @@
                 <center><h1>CHATTERBOX</h1></center>
         </div>
         <div class="container-fluid">
-            <form id="frmmain">
+            <!--<form id="frmmain">-->
                 <div class="row">
                     <div class="col-3">
                         <br>
+                    <form>
                         <h4 id="displaynm">Type in your Display Name.</h4>
                         <br>
                         <div>
@@ -35,14 +36,19 @@
                             <button class="btn btn-primary" onclick="display_name()" type="submit">Set Display Name</button>
                             <br>
                         </div>
+                    </form>
+                    <form>
                         <div>
                             <br><hr><br>
+
                             <h6>Select a Channel:</h6>
                             <select id="lstchannel" name="lstchannel" onchange="jumpto(options.selectedIndex.value)">
                             </select>
 
                             <!--<select id="lstchannel" name="lstchannel"><option>{{ channel_list }}</option></select>-->
                         </div>
+                    </form>
+                    <form>
                         <div>
                             <br><hr><br>
                             <h6>Create a New Channel:</h6>
@@ -53,14 +59,19 @@
                             <br><br>
                         </div>
                     </div>
+                    </form>
                     <div class="col-9">
-                        <ul id="messages"></ul>
-                        <input id="txtmessage" type="text" name="txtmessage" placeholder="New Message"/>
-                        <button id="btnsendmsg" name="btnsendmsg" class="btn btn-primary" type="button">Send</button>
+                        <form>
+                            <div>
+                                <input id="txtmessage" type="text" name="txtmessage" placeholder="New Message"/>
+                            </div>
+                            <div>
+                                <button id="btnsendmsg" name="btnsendmsg" class="btn btn-primary" type="button">Send</button>
+                            </div>
+                        </form>
                         <div>
-                            <ul data-message="msgchat()" id="msgbox" name="msgbox">
-                                <li onclick="msgchat()"></li>
-                            </ul>
+                        <ul id="msgbox">
+                        </ul>
 
                             <!--<textarea disabled data-vote="yes" rows="20" cols="70" id="msgbox" name="msgbox">-->
                             <!--</textarea>-->
@@ -68,7 +79,7 @@
                         <!--<button data-message="message" class="btn btn-primary" onclick="message()" type="button">Send</button>-->
                     </div>
                 </div>
-            </form>
+            <!--</form>-->
         </div>
     </body>
 </html>
