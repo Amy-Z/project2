@@ -12,40 +12,6 @@
                 document.location.href = x
                 // 	}
                 }
-
-            function msgchat()
-            {
-                document.addEventListener('DOMContentLoaded', () => {
-                    // Connect to websocket
-                    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
-                    // When connected, configure buttons
-                    socket.on('connect', () => {
-                        // Each button should emit a "submit message" event
-                        document.querySelectorAll('btnsendmsg').forEach(btnsendmsg => {
-                            btnsendmsg.onclick = () => {
-                                const selection = btnsendmsg.dataset.vote;
-                                socket.emit('submit message', selection);
-                            };
-                        });
-                    });
-                    // When a new message is announced, add to the unordered list
-                    socket.on('announce message', data => {
-                        // const li = document.getElementById("vote").ELEMENT_NODE.add('li');
-                        // li.innerHTML = `Vote recorded: ${data.selection}`;
-                        const li = document.createElement('li');
-                        li.innerHTML = `${data.selection}`;
-                        document.querySelector('#votes').append(li);
-
-                        var ul = document.getElementById("msglist");
-                        // var li = document.createElement("li");
-                        var children = ul.children.length + 1;
-                        li.setAttribute("id", "element"+children);
-                        li.appendChild(document.createTextNode("Element "+children));
-                        ul.appendChild(li);
-                        // document.querySelector('#votes').append(li);
-                    });
-                });
-            }
         </script>
         <title>Chatterbox</title>
     </head>
@@ -73,9 +39,6 @@
                             <br><hr><br>
                             <h6>Select a Channel:</h6>
                             <select id="lstchannel" name="lstchannel" onchange="jumpto(options.selectedIndex.value)">
-                                <option value=https://www.cnn.com>general</option>
-                                <option value=https://www.google.com>social</option>
-                                <option value=https://www.yahoo.com>random</option>
                             </select>
 
                             <!--<select id="lstchannel" name="lstchannel"><option>{{ channel_list }}</option></select>-->
@@ -92,10 +55,10 @@
                     </div>
                     <div class="col-9">
                         <ul id="messages"></ul>
-                        <input id="txtmessage" type="text" name="txtmessage" placeholder="New Message">
+                        <input id="txtmessage" type="text" name="txtmessage" placeholder="New Message"/>
                         <button id="btnsendmsg" name="btnsendmsg" class="btn btn-primary" type="button">Send</button>
                         <div>
-                            <ul data-vote="msgchat()" id="msgbox" name="msgbox">
+                            <ul data-message="msgchat()" id="msgbox" name="msgbox">
                                 <li onclick="msgchat()"></li>
                             </ul>
 
