@@ -14,15 +14,34 @@ socketio = SocketIO(app)
 channel_list = ['general']
 messages = []
 
-
+@socketio.on("create channel")
 @app.route("/")
-def index():
+def index(usrinput):
+    channel_list.append(data["channel"])
+    emit("added", usrinput, broadcase=True)
     return render_template("index.html")
+
+# d = new Date();
+# timee = JSON.parse(d);
 
 @socketio.on("submit message")
 def chats(data):
-    messages.append(data)
+    messages.append(data["text"])
+    datetime.datetime
     emit("receive", data, broadcast=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
 # selection = data["selection"]
 # emit("announce message", selection, broadcast=True)
 

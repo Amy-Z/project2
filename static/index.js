@@ -51,121 +51,27 @@ function addchannel()
     // document.getElementById("lstchannel").value = channel_list;
 }
 
-// function msgchat()
-// {
-//     document.addEventListener('DOMContentLoaded', () => {
-//         // Connect to websocket
-//         var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
-//         // When connected, configure buttons
-//         socket.on('connect', () => {
-//             // Each button should emit a "submit message" event
-//             document.querySelectorAll('btnsendmsg').forEach(btnsendmsg => {
-//                 btnsendmsg.onclick = () => {
-//                     const selection = btnsendmsg.dataset.message;
-//                     socket.emit('submit message', selection);
-//                 };
-//             });
-//         });
-//         // When a new message is announced, add to the unordered list
-//         socket.on('announce message', data => {
-//             // const li = document.getElementById("message").ELEMENT_NODE.add('li');
-//             // li.innerHTML = `Message recorded: ${data.selection}`;
-//             const limsg = document.createElement('limsg');
-//             limsg.innerHTML = limsg;
-//             document.querySelector('messages').append(limsg);
-
-//             // var ul = document.getElementById("msglist");
-//             // var li = document.createElement("li");
-//             // var children = ul.children.length + 1;
-//             // li.setAttribute("id", "element"+children);
-//             // li.appendChild(document.createTextNode("Element "+children));
-//             // ul.appendChild(li);
-//             // document.querySelector('#votes').append(li);
-//         });
-//     });
-// }
-
 document.addEventListener('DOMContentLoaded', () =>
 {
-   let showname = localStorage.getItem('username');
    var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
    socket.on('connect', () => {
        document.querySelectorAll('#btnsendmsg').forEach(button => {
            button.onclick = () => {
+               var d = new Date();
+               var showname = localStorage.getItem('username');
                var sentmsg = document.querySelector('#txtmessage').value;
+            //   document.getElementById("msgbox").innerHTML = d.toString();
                alert("New Message: " + sentmsg + " - " + showname);
-               socket.emit('submit message', sentmsg);
+               socket.emit('submit message', {"text" : sentmsg, "date" : d.toString(), "user" : showname});
            };
        });
    });
-
    socket.on('receive', data => {
        const li = document.createElement('li');
-       li.innerHTML = `${data}`;
+       data["date"]
+       li.innerHTML = `${data["user"]} : ${data["text"]} - ${data["date"]}`;
        document.querySelector('#msgbox').append(li);
    });
 });
-
-
-// function msgchat()
-// {
-//     document.addEventListener('DOMContentLoaded', () => {
-//         // Connect to websocket
-//         var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
-
-//         // When connected, configure buttons
-//         socket.on('connect', () => {
-
-//             // Each button should emit a "submit message" event
-//             document.querySelectorAll('btnsendmsg').forEach(btnsendmsg => {
-//                 btnsendmsg.onclick = () => {
-//                     const selection = btnsendmsg.dataset.vote;
-//                     socket.emit('submit message', selection);
-//                 };
-//             });
-//         });
-//         // When a new vote is announced, add to the unordered list
-//         socket.on('announce message', data => {
-//             // const li = document.getElementById("vote").ELEMENT_NODE.add('li');
-//             // li.innerHTML = `Vote recorded: ${data.selection}`;
-//             const li = document.createElement('li');
-//             li.innerHTML = messagestr;
-//             document.querySelector('message').append(li);
-
-
-//             // var ul = document.getElementById("msglist");
-//             // var li = document.createElement("li");
-//             // var children = ul.children.length + 1;
-//             // li.setAttribute("id", "element"+children);
-//             // li.appendChild(document.createTextNode("Element "+children));
-//             // ul.appendChild(li);
-//             // document.querySelector('#votes').append(li);
-//         });
-//     });
-// }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     var messagestr=document.getElementById("txtmessage").value;
-//         // Connect to websocket
-//     alert(messagestr);
-//     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
-//     // When connected, configure buttons
-//     socket.on('connect', () => {
-//         // Each button should emit a "submit message" event
-//         document.querySelectorAll('button').forEach(button => {
-//             button.onclick = () => {
-//                 const selection = button.dataset.message;
-//                 socket.emit('submit message', {'selection': selection});
-//             };
-//         });
-//     });
-//     // When a new message is announced, add to the unordered list
-//     socket.on('announce message', data => {
-//         const li = document.createElement('li');
-//         li.innerHTML = messagestr;
-//         document.querySelector('#messages').append(li);
-//     });
-// });
-
 
 
