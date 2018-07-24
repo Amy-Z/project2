@@ -17,6 +17,7 @@
         <div style="background-color:#800000; color:white" class="jumbotron">
                 <center><h1>CHATTERBOX</h1></center>
         </div>
+        <marquee><h4 style="font-family:Calibri; top:0px; left:0px; z-index:1;">Welcome to Chatterbox!</h4></marquee>
         <!--left navigation panel-->
         <div class="container-fluid" style="margin:10px">
                 <div class="row">
@@ -39,7 +40,7 @@
                             <br><hr><br>
 
                             <h6>Select a Channel:</h6>
-                            <select id="lstchannel" name="lstchannel" onchange="uploadchannmasg()">
+                            <select id="lstchannel" name="lstchannel" onchange="uploadchannmasg()" style="min-width: 110px">
                             </select>
 
                             <!--<select id="lstchannel" name="lstchannel"><option>{{ channel_list }}</option></select>-->
@@ -74,6 +75,8 @@
                             <ul id="msgbox">
                             </ul>
                         </div>
+                        <br>
+                        <br>
                         <div id="channmsg"></div>
                     </div>
                 </div>

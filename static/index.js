@@ -23,7 +23,7 @@ function show_name()
 function uploadchannmasg()
 {
     var x = document.getElementById("lstchannel").value;
-    document.getElementById("channmsg").innerHTML = "You selected: " + x;
+    document.getElementById("channmsg").innerHTML = "Channel selected: " + x;
 }
 
 
@@ -76,22 +76,22 @@ document.addEventListener('DOMContentLoaded', () =>
         // initialize the empty allchann array
         allchann = []
         // if the number of items in the allchann array does not exceed 100, append to the array the message and corresponding credentials
-        for (i = 0; i < 1; i++) {
-            if (allchann.length < 2) {
-                const li = document.createElement('li');
-                document.querySelector('#msgbox').append(li);
-                data["date"];
-                // in a list, display from the data dictionary the name of the user who sent the message, the text message, the datetime sent, and the current channel
-                li.innerHTML = `${data["user"]} : ${data["text"]} - ${data["date"]} - ${data["lstchannel"]}`;
-                li.appendChild(allchann);
-                document.getElementById("msgbox").appendChild(li);
-            }
-            // if the length of the array is greater than 100, pop the earliest message
-            else {
-                allchann.pop();
-                alert(allchann);
-            }
+        if ((document.getElementById("msgbox").getElementsByTagName("li").length) < 100) {
+        // if (li.length < 2) {
+            const li = document.createElement('li');
+            document.querySelector('#msgbox').append(li);
+            data["date"];
+            // in a list, display from the data dictionary the name of the user who sent the message, the text message, the datetime sent, and the current channel
+            li.innerHTML = `${data["user"]} : ${data["text"]} - ${data["date"]} - ${data["lstchannel"]}`;
+            li.appendChild(allchann);
+            document.getElementById("msgbox").appendChild(li);
         }
+        // if the length of the array is greater than 100, pop the earliest message
+        else {
+            alert("You have reached 100 messages.");
+            li.pop();
+        }
+
     });
     // socket server side application.py
     socket.on('here', chann => {
