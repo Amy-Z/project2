@@ -42,7 +42,9 @@
                             <br><hr><br>
 
                             <h6>Select a Channel:</h6>
-                            <select id="lstchannel" name="lstchannel" onchange="jumpto(options.selectedIndex.value)">
+                            <select id="lstchannel" name="lstchannel" onchange="uploadchannmasg()">
+                                <options>http://cnn.com</options>
+                                <options>http://google.com</options>
                             </select>
 
                             <!--<select id="lstchannel" name="lstchannel"><option>{{ channel_list }}</option></select>-->
@@ -55,7 +57,7 @@
 
                             <input id="txtchannel" type="text" name="txtchannel" placeholder="Channel Name">
                             <br><br>
-                            <button class="btn btn-primary" onclick="addchannel()" type="button" onsubmit="return false">Create</button>
+                            <button id="createchannel" class="btn btn-primary" type="button" onsubmit="return false">Create</button>
                             <br><br>
                         </div>
                     </div>
@@ -76,6 +78,7 @@
                             <!--<textarea disabled data-vote="yes" rows="20" cols="70" id="msgbox" name="msgbox">-->
                             <!--</textarea>-->
                         </div>
+                        <div id="channmsg"></div>
                         <!--<button data-message="message" class="btn btn-primary" onclick="message()" type="button">Send</button>-->
                     </div>
                 </div>

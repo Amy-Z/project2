@@ -12,48 +12,28 @@ socketio = SocketIO(app)
 
 # list of all channels
 channel_list = ['general']
+# store messages here
 messages = []
+allchann = ['']
+# allchann = {'general': None}
 
-@socketio.on("create channel")
+
+# single page application at index.html
 @app.route("/")
-def index(usrinput):
-    channel_list.append(data["channel"])
-    emit("added", usrinput, broadcase=True)
+def index():
     return render_template("index.html")
 
-# d = new Date();
-# timee = JSON.parse(d);
 
+# with socket, append the sent messages to the list and store messages server side
 @socketio.on("submit message")
 def chats(data):
-    messages.append(data["text"])
+    allchann.append(data["text"])
     datetime.datetime
     emit("receive", data, broadcast=True)
 
 
-
-
-
-
-
-
-
-
-
-
-
-# selection = data["selection"]
-# emit("announce message", selection, broadcast=True)
-
-
-
-# @app.route("/channel", methods=["POST"])
-# def channels():
-
-#     new = int(request.form.get("channel"))
-
-#     for i in range(0, len(channel_list)):
-#         channel_list.append(new)
-
-#     # Return list of posts.
-#     return jsonify(channel_list)
+# with socket, append the channel to the list of created channels
+@socketio.on("existchann")
+def exist(chann):
+    channel_list.append(chann["group"])
+    emit("here", chann, broadcast=True)
